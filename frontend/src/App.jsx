@@ -12,7 +12,7 @@ function App() {
     setLoading(true)
     try {
       // Send the text to your FastAPI backend
-      const response = await fetch('https://cyber-guard-api-xxxx.onrender.com/predict', {
+      const response = await fetch('https://cyber-guard-api.onrender.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
