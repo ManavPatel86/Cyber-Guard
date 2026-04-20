@@ -1,0 +1,14 @@
+# Ignore virtual environments
+backend/venv/
+venv/
+__pycache__/
+
+# Ignore massive datasets
+backend/data/
+*.csv
+
+# Ignore React build files
+frontend/node_modules/
+frontend/dist/
+
+*.pkl
