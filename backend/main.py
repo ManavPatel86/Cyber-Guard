@@ -1,14 +1,24 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import os
 import pickle,joblib
 
 app = FastAPI()
 
+frontend_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "FRONTEND_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173",
+    ).split(",")
+    if origin.strip()
+]
+
 # Allow your React frontend to communicate with this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, you can lock this down to your Vercel URL
+    allow_origins=frontend_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
